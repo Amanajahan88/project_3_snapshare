@@ -51,7 +51,7 @@ class _LoginScreenState extends State<SignupScreen> {
       email: _emailController.text,
       password: _passwordController.text,
       bio: _bioController.text,
-      file: _image!,
+      file: _image,
     );
     setState(() {
       _isLoading = false;
