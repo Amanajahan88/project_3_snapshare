@@ -22,7 +22,7 @@ class FeedScreen extends StatelessWidget {
                         : mobileBackgroundColor,
                 centerTitle: false,
                 title: Text(
-                  "Momentify",
+                  "SnapShare",
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 23,

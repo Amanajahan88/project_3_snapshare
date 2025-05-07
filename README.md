@@ -1,6 +1,6 @@
-# Momentify 📸✨
+# SnapShare 📸✨
 
-Momentify is a social media app where users can share photos, follow other users, like posts, and leave comments. It’s built with **Flutter**, **Firebase** for authentication and storage, and **Provider** for state management. 
+SnapShare is a social media app where users can share photos, follow other users, like posts, and leave comments. It’s built with **Flutter**, **Firebase** for authentication and storage, and **Provider** for state management. 
 
 ---
 
@@ -46,7 +46,7 @@ Here’s a sneak peek at what the app looks like! 👇
 ---
 
 ### 5. **Create a Post Screen** ✨  
-<img src="https://github.com/Shreesha001/Momentify_Flutter/blob/main/6258117046965487199_121.jpg" width="300" alt="Create Post Screenshot">
+<img src="https://github.com/Shreesha001/SnapShare_Flutter/blob/main/6258117046965487199_121.jpg" width="300" alt="Create Post Screenshot">
 <p>The screen to create a new post, upload an image, and share with your followers.</p>
 
 ---
@@ -61,10 +61,10 @@ Here’s a sneak peek at what the app looks like! 👇
 To run this project on your local machine, follow these steps:
 
 1. Clone the repository:  
-   `git clone https://github.com/Shreesha001/Momentify_flutter.git`
+   `git clone https://github.com/Shreesha001/SnapShare_flutter.git`
 
 2. Navigate to the project directory:  
-   `cd Momentify_flutter`
+   `cd SnapShare_flutter`
 
 3. Install dependencies:  
    `flutter pub get`
@@ -95,7 +95,7 @@ Here are the main dependencies used in this project:
 
 ## Contributing 🤝
 
-Contributions are welcome! If you'd like to contribute to Momentify, please follow these steps:
+Contributions are welcome! If you'd like to contribute to SnapShare, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature/YourFeatureName`).

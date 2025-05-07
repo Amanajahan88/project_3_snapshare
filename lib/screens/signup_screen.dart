@@ -100,7 +100,7 @@ class _LoginScreenState extends State<SignupScreen> {
                     ).createShader(bounds);
                   },
                   child: Text(
-                    "Momentify",
+                    "SnapShare",
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 50,

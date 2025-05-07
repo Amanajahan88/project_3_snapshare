@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ).createShader(bounds);
                 },
                 child: const Text(
-                  "Momentify",
+                  "SnapShare",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 50,
