@@ -4,6 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:instagram_flutter/utils/global_variables.dart';
 import 'package:instagram_flutter/widgets/post_card.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/user_provider.dart';
 
 class FeedScreen extends StatelessWidget {
   const FeedScreen({super.key});
@@ -55,6 +58,10 @@ class FeedScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
+
+          if(Provider.of<UserProvider>(context).getUser==null)
+            return SizedBox();
+
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
             itemBuilder:
