@@ -55,7 +55,7 @@ class AuthMethods {
         uid: cred.user!.uid,
         email: email,
         bio: bio,
-        photoUrl: "https://i.ibb.co.com/RG444btQ/image.png",
+        photoUrl: "https://i.ibb.co.com/7xKtg74t/image.png",
         followers: [],
         following: [],
       );

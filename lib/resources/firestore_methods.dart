@@ -34,7 +34,7 @@ class FireStoreMethods {
         likes: [],
         postId: postId,
         datePublished: DateTime.now(),
-        postUrl: "https://th.bing.com/th/id/OIP.TTCJ7t2qtABchBS5Zl4avgHaE7?cb=iwp1&rs=1&pid=ImgDetMain",
+        postUrl: "https://i.ibb.co.com/vCvjX8SS/image.png",
         profImage: profImage,
       );
       _firestore.collection('posts').doc(postId).set(post.toJason());
