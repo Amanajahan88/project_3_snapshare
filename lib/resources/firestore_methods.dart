@@ -13,7 +13,7 @@ class FireStoreMethods {
 
   Future<String> uploadPost(
     String description,
-    Uint8List file,
+    Uint8List? file,
     String uid,
     String username,
     String profImage,
@@ -21,11 +21,11 @@ class FireStoreMethods {
     // asking uid here because we dont want to make extra calls to firebase auth when we can just get from our state management
     String res = "Some error occurred";
     try {
-      String photoUrl = await StorageMethods().uploadImageToStorage(
-        'posts',
-        file,
-        true,
-      );
+      // String photoUrl = await StorageMethods().uploadImageToStorage(
+      //   'posts',
+      //   file,
+      //   true,
+      // );
       String postId = const Uuid().v1(); // creates unique id based on time
       Post post = Post(
         description: description,
@@ -34,7 +34,7 @@ class FireStoreMethods {
         likes: [],
         postId: postId,
         datePublished: DateTime.now(),
-        postUrl: photoUrl,
+        postUrl: "https://th.bing.com/th/id/OIP.TTCJ7t2qtABchBS5Zl4avgHaE7?cb=iwp1&rs=1&pid=ImgDetMain",
         profImage: profImage,
       );
       _firestore.collection('posts').doc(postId).set(post.toJason());

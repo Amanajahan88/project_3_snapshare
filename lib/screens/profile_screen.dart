@@ -91,8 +91,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 CircleAvatar(
                                   backgroundColor: Colors.grey,
                                   backgroundImage: NetworkImage(
-                                    userData['photoUrl'] ??
-                                        "https://defaultProfileImage.jpg",
+                                    "https://th.bing.com/th/id/OIP.sT_2ykl1YMJDSv9MnK0W4wHaE7?cb=iwp1&rs=1&pid=ImgDetMain"
+                                    // userData['photoUrl'] ??
+                                    //     "https://defaultProfileImage.jpg",
                                   ),
                                   radius: 40,
                                 ),
