@@ -59,6 +59,7 @@ class _PostCardState extends State<PostCard> {
             ).copyWith(right: 0),
             child: Row(
               children: [
+
                 CircleAvatar(
                   backgroundImage: NetworkImage(widget.snap['profImage']),
 
