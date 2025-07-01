@@ -42,83 +42,83 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body:
-          isShowUsers
-              ? FutureBuilder(
-                future:
-                    FirebaseFirestore.instance
-                        .collection('users')
-                        .where(
-                          'username',
-                          isGreaterThanOrEqualTo: searchController.text,
-                        )
-                        .get(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  return ListView.builder(
-                    itemCount: (snapshot.data! as dynamic).docs.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap:
-                            () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => ProfileScreen(
-                                      uid:
-                                          (snapshot.data! as dynamic)
-                                              .docs[index]['uid'],
-                                    ),
-                              ),
-                            ),
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                              (snapshot.data! as dynamic)
-                                  .docs[index]['photoUrl'],
-                            ),
-                          ),
-                          title: Text(
-                            (snapshot.data! as dynamic).docs[index]['username'],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              )
-              : FutureBuilder(
-                future:
-                    FirebaseFirestore.instance
-                        .collection('posts')
-                        .where(
-                          'caption',
-                          isGreaterThanOrEqualTo: searchController.text,
-                        )
-                        .where(
-                          'caption',
-                          isLessThanOrEqualTo: searchController.text + '\uf8ff',
-                        )
-                        .get(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
+      isShowUsers
+          ? FutureBuilder(
+        future:
+        FirebaseFirestore.instance
+            .collection('users')
+            .where(
+          'username',
+          isGreaterThanOrEqualTo: searchController.text,
+        )
+            .get(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return ListView.builder(
+            itemCount: (snapshot.data! as dynamic).docs.length,
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap:
+                    () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder:
+                        (context) => ProfileScreen(
+                      uid:
+                      (snapshot.data! as dynamic)
+                          .docs[index]['uid'],
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      (snapshot.data! as dynamic)
+                          .docs[index]['photoUrl'],
+                    ),
+                  ),
+                  title: Text(
+                    (snapshot.data! as dynamic).docs[index]['username'],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      )
+          : FutureBuilder(
+        future:
+        FirebaseFirestore.instance
+            .collection('posts')
+            .where(
+          'caption',
+          isGreaterThanOrEqualTo: searchController.text,
+        )
+            .where(
+          'caption',
+          isLessThanOrEqualTo: searchController.text + '\uf8ff',
+        )
+            .get(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-                  return MasonryGridView.count(
-                    crossAxisCount: 3,
-                    itemCount: (snapshot.data! as dynamic).docs.length,
-                    itemBuilder: (context, index) {
-                      return Image.network(
-                        (snapshot.data! as dynamic).docs[index]['postUrl'],
-                        fit: BoxFit.cover,
-                      );
-                    },
-                    mainAxisSpacing: 8.0,
-                    crossAxisSpacing: 8.0,
-                  );
-                },
-              ),
+          return MasonryGridView.count(
+            crossAxisCount: 3,
+            itemCount: (snapshot.data! as dynamic).docs.length,
+            itemBuilder: (context, index) {
+              return Image.network(
+                (snapshot.data! as dynamic).docs[index]['postUrl'],
+                fit: BoxFit.cover,
+              );
+            },
+            mainAxisSpacing: 8.0,
+            crossAxisSpacing: 8.0,
+          );
+        },
+      ),
     );
   }
 }

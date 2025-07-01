@@ -185,11 +185,14 @@ class _PostCardState extends State<PostCard> {
               ),
               IconButton(
                 onPressed:
-                    () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => CommentsScreen(snap: widget.snap),
-                      ),
-                    ),
+                    (){
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('🚧 Under Development'),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                    },
                 icon: const Icon(Icons.comment_outlined),
               ),
 
