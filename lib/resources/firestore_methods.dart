@@ -45,7 +45,7 @@ class FireStoreMethods {
     return res;
   }
 
-  Future<void> likePost(String postId, String uid, List likes) async {
+  Future<void> likePost(String postId, String uid, List likes, String currentUsername) async {
     try {
       if (likes.contains(uid)) {
         await _firestore.collection("posts").doc(postId).update({
@@ -56,14 +56,14 @@ class FireStoreMethods {
           'likes': FieldValue.arrayUnion([uid]),
         });
 
-        // Fetch post data to get owner and username
+        // Fetch post data to get owner
         final postSnap = await _firestore.collection("posts").doc(postId).get();
         final postData = postSnap.data();
         if (postData != null && postData['uid'] != uid) {
           await _firestore.collection('notifications').add({
             'toUid': postData['uid'],
             'fromUid': uid,
-            'fromUsername': postData['username'],
+            'fromUsername': currentUsername, // Use current user's username
             'type': 'like',
             'postId': postId,
             'timestamp': FieldValue.serverTimestamp(),
