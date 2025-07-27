@@ -31,11 +31,11 @@ class _PostCardState extends State<PostCard> {
   void getComments() async {
     try {
       QuerySnapshot snap =
-          await FirebaseFirestore.instance
-              .collection('posts')
-              .doc(widget.snap['postId'])
-              .collection('comments')
-              .get();
+      await FirebaseFirestore.instance
+          .collection('posts')
+          .doc(widget.snap['postId'])
+          .collection('comments')
+          .get();
 
       commentLen = snap.docs.length;
     } catch (e) {
@@ -86,31 +86,31 @@ class _PostCardState extends State<PostCard> {
                       context: context,
                       builder:
                           (context) => Dialog(
-                            child: ListView(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                              shrinkWrap: true,
-                              children:
-                                  ['Delete']
-                                      .map(
-                                        (e) => InkWell(
-                                          onTap: () async {
-                                            FireStoreMethods().deletePost(
-                                              widget.snap['postId'],
-                                            );
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 12,
-                                              horizontal: 16,
-                                            ),
-                                            child: Text(e),
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
+                        child: ListView(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shrinkWrap: true,
+                          children:
+                          ['Delete']
+                              .map(
+                                (e) => InkWell(
+                              onTap: () async {
+                                FireStoreMethods().deletePost(
+                                  widget.snap['postId'],
+                                );
+                                Navigator.of(context).pop();
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 12,
+                                  horizontal: 16,
+                                ),
+                                child: Text(e),
+                              ),
                             ),
-                          ),
+                          )
+                              .toList(),
+                        ),
+                      ),
                     );
                   },
                   icon: Icon(Icons.more_vert),
@@ -178,18 +178,18 @@ class _PostCardState extends State<PostCard> {
                     );
                   },
                   icon:
-                      widget.snap['likes'].contains(user.uid)
-                          ? const Icon(Icons.favorite, color: Colors.red)
-                          : Icon(Icons.favorite_border),
+                  widget.snap['likes'].contains(user.uid)
+                      ? const Icon(Icons.favorite, color: Colors.red)
+                      : Icon(Icons.favorite_border),
                 ),
               ),
               IconButton(
                 onPressed:
                     () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => CommentsScreen(snap: widget.snap),
-                      ),
-                    ),
+                  MaterialPageRoute(
+                    builder: (context) => CommentsScreen(snap: widget.snap),
+                  ),
+                ),
                 icon: const Icon(Icons.comment_outlined),
               ),
 

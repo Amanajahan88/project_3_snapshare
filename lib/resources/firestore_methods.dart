@@ -55,6 +55,20 @@ class FireStoreMethods {
         await _firestore.collection("posts").doc(postId).update({
           'likes': FieldValue.arrayUnion([uid]),
         });
+
+        // Fetch post data to get owner and username
+        final postSnap = await _firestore.collection("posts").doc(postId).get();
+        final postData = postSnap.data();
+        if (postData != null && postData['uid'] != uid) {
+          await _firestore.collection('notifications').add({
+            'toUid': postData['uid'],
+            'fromUid': uid,
+            'fromUsername': postData['username'],
+            'type': 'like',
+            'postId': postId,
+            'timestamp': FieldValue.serverTimestamp(),
+          });
+        }
       }
     } catch (e) {
       print(e.toString());

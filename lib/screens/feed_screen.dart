@@ -16,45 +16,45 @@ class FeedScreen extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar:
-          width > webScreenSize
-              ? null
-              : AppBar(
-                backgroundColor:
-                    width > webScreenSize
-                        ? webBackgroundColor
-                        : mobileBackgroundColor,
-                centerTitle: false,
-                title: Text(
-                  "SnapShare",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 23,
-                    foreground:
-                        Paint()
-                          ..shader = const LinearGradient(
-                            colors: <Color>[
-                              Colors.blue, // Blue color
-                              Colors.cyan, // Cyan color
-                            ],
-                          ).createShader(
-                            const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
-                          ),
-                  ),
-                ),
-
-                actions: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.messenger_outline),
-                  ),
+      width > webScreenSize
+          ? null
+          : AppBar(
+        backgroundColor:
+        width > webScreenSize
+            ? webBackgroundColor
+            : mobileBackgroundColor,
+        centerTitle: false,
+        title: Text(
+          "SnapShare",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 23,
+            foreground:
+            Paint()
+              ..shader = const LinearGradient(
+                colors: <Color>[
+                  Colors.blue, // Blue color
+                  Colors.cyan, // Cyan color
                 ],
+              ).createShader(
+                const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
               ),
+          ),
+        ),
+
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.messenger_outline),
+          ),
+        ],
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('posts').snapshots(),
         builder: (
-          context,
-          AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
-        ) {
+            context,
+            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
+            ) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
@@ -66,12 +66,12 @@ class FeedScreen extends StatelessWidget {
             itemCount: snapshot.data!.docs.length,
             itemBuilder:
                 (context, index) => Container(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: width > webScreenSize ? width * 0.3 : 0,
-                    vertical: width > webScreenSize ? 15 : 0,
-                  ),
-                  child: PostCard(snap: snapshot.data!.docs[index].data()),
-                ),
+              margin: EdgeInsets.symmetric(
+                horizontal: width > webScreenSize ? width * 0.3 : 0,
+                vertical: width > webScreenSize ? 15 : 0,
+              ),
+              child: PostCard(snap: snapshot.data!.docs[index].data()),
+            ),
           );
         },
       ),
