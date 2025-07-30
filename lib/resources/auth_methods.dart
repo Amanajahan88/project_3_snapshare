@@ -32,7 +32,7 @@ class AuthMethods {
   }) async {
     try {
       // Ensure all fields are provided
-      if (username.isEmpty || email.isEmpty || password.isEmpty || bio.isEmpty) {
+      if (username.isEmpty || email.isEmpty || password.isEmpty || bio.isEmpty || file==null) {
         return 'Please enter all the fields';
       }
 
@@ -43,11 +43,11 @@ class AuthMethods {
       );
 
       // Upload profile picture
-      // final photoUrl = await StorageMethods().uploadImageToStorage(
-      //   'profilePics',
-      //   file,
-      //   false,
-      // );
+      final photoUrl = await StorageMethods().uploadImageToStorage(
+        'profilePics',
+        file!,
+        false,
+      );
 
       // Build user model
       final user = model.User(
@@ -55,7 +55,7 @@ class AuthMethods {
         uid: cred.user!.uid,
         email: email,
         bio: bio,
-        photoUrl: "https://i.ibb.co.com/7xKtg74t/image.png",
+        photoUrl: photoUrl, // "https://i.ibb.co.com/7xKtg74t/image.png",
         followers: [],
         following: [],
       );
